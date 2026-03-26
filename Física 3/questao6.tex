@@ -62,10 +62,10 @@
 	A força $d\textbf{F}_1$ é então:
 	
 	\[
-	d\textbf{F}_1=k\frac{Qdq}{r^3}\textbf{r}_1
+	d\textbf{F}_1=k\frac{Qdq}{r'^3}\textbf{r}_1
 	\]
 	
-	Escrevendo $\textbf{r}_1$ em termos de $\textbf{i}$ e $\textbf{j}$:
+	Escrevendo $\textbf{r}_1$ em termos de $\textbf{i}$, $\textbf{j}$ e $\textbf{k}$:
 	
 	\[
 	\textbf{r}_1=\textbf{r}-\textbf{a}_1
@@ -84,21 +84,116 @@
 	Ou seja:
 	
 	\[
-	d\textbf{F}_1=k\frac{Q\lambda d\beta a}{r^3}\left(-a\cos\beta\textbf{i}-a\sin\beta\textbf{j}+r\textbf{k}\right)
+	d\textbf{F}_1=k\frac{Q\lambda d\beta a}{r'^3}\left(-a\cos\beta\textbf{i}-a\sin\beta\textbf{j}+r\textbf{k}\right)
 	\]
 	
 	\[
-	\textbf{F}_1=k\frac{Q\lambda a}{r^3}\int_{0}^{\pi}d\beta\left(-a\cos\beta\textbf{i}-a\sin\beta\textbf{j}+r\textbf{k}\right)
+	\textbf{F}_1=k\frac{Q\lambda a}{r'^3}\int_{0}^{\pi}d\beta\left(-a\cos\beta\textbf{i}-a\sin\beta\textbf{j}+r\textbf{k}\right)
 	\]
 	
 	\[
-	\textbf{F}_1=k\frac{Q\lambda a}{r^3}\left[\int_{0}^{\pi}-a\cos\beta d\beta+\int_{0}^{\pi}-a\sin\beta d\beta\textbf{j}+\int_{0}^{\pi}rd\beta\textbf{k}\right]
+	\textbf{F}_1=k\frac{Q\lambda a}{r'^3}\left[\int_{0}^{\pi}-a\cos\beta d\beta\textbf{i}+\int_{0}^{\pi}-a\sin\beta d\beta\textbf{j}+\int_{0}^{\pi}rd\beta\textbf{k}\right]
 	\]
 	
 	
 	\[
-	\textbf{F}_1=k\frac{Q\lambda a}{r^3}\left[-a\sin\beta\left.\right|_{0}^\pi-(-\cos\beta\left.\right|_{0}^\pi)+\beta\left.\right|_{0}^\pi\right]
+	\textbf{F}_1=k\frac{Q\lambda a}{r'^3}\left[\cancelto{0}{-a\sin\beta\left.\right|_{0}^\pi\textbf{i}}-a(-\cos\beta\left.\right|_{0}^\pi)\textbf{j}+\beta\left.\right|_{0}^\pi r\textbf{k}\right]
+	\]
+	
+	\[
+	\textbf{F}_1=k\frac{Q\lambda a}{r'^3}\left[-2a\textbf{j}+r\pi\textbf{k}\right]
+	\]
+	
+	A força $d\textbf{F}_2$ é:
+	
+	\[
+	d\textbf{F}_2=-k\frac{Qdq}{r'^3}\textbf{r}_2
+	\]
+	
+	Escrevendo $\textbf{r}_2$ em termos de $\textbf{i}$, $\textbf{j}$ e $\textbf{k}$:
+	
+	\[
+	\textbf{r}_2=\textbf{r}-\textbf{a}_2
+	\]
+	
+	\[
+	\textbf{r}_2=r\textbf{k}-a(\cos\phi\textbf{i}+\sin\phi\textbf{j})
+	\]
+	
+	\[
+	\textbf{r}_2=-a\cos\phi\textbf{i}-a\sin\phi\textbf{j}+r\textbf{k}
+	\]
+	
+	A distribuição de carga na parte inferior seria:
+	
+	\[
+	\lambda=\frac{dq}{d\phi a}\Rightarrow dq=\lambda d\phi a
+	\]
+	
+	Ou seja,
+	
+	\[
+	d\textbf{F}_2=-k\frac{Q\lambda d\phi a}{r'^3}\left[-a\cos\phi\textbf{i}-a\sin\phi\textbf{j}+r\textbf{k}\right]
+	\]
+	
+	\[
+	\textbf{F}_2=-k\frac{Q\lambda a}{r'^3}\left[-a\textbf{i}\int_{\pi}^{2\pi}\cos\phi d\phi-a\textbf{j}\int_{\pi}^{2\pi}\sin\phi d\phi+r\textbf{k}\int_{\pi}^{2\pi}d\phi\right]
+	\]
+	
+	\[
+	\textbf{F}_2=-k\frac{Q\lambda a}{r'^3}\left[-a\textbf{i}\left(\sin\phi\left.\right|_{\pi}^{2\pi}\right)-a\textbf{j}\left(-\cos\phi\left.\right|_{\pi}^{2\pi}\right)+r\textbf{k}\left(\phi\left.\right|_{\pi}^{2\pi}\right)\right]
+	\]
+	
+	\[
+	\textbf{F}_2=-k\frac{Q\lambda a}{r'^3}\left[2a\textbf{j}+r\pi\textbf{k}\right]
+	\]
+	
+	A força resultante será então de:
+	
+	\[
+	\textbf{F}=\textbf{F}_1+\textbf{F}_2=k\frac{Q\lambda a}{r'^3}\left[-2a\textbf{j}+r\pi\textbf{k}\right]-k\frac{Q\lambda a}{r'^3}\left[2a\textbf{j}+r\pi\textbf{k}\right]
+	\]
+	
+	\[
+	\textbf{F}=k\frac{Q\lambda a}{r'^3}\left[-2a\textbf{j}+r\pi\textbf{k}-2a\textbf{j}-r\pi\textbf{k}\right]
+	\]
+	
+	\[
+	\textbf{F}=-k\frac{4Q\lambda a^2}{r'^3}\textbf{j}
 	\]
 	
 	
-\end{document}
+	Por o sistema ser um cone temos que:
+	
+	\[
+	r'^2=r^2+a^2\Rightarrow r'=\sqrt{r^2+a^2}\Rightarrow r'^3=(r^2+a^2)^{3/2}
+	\]
+	
+	Além disso:
+	
+	\[
+	\lambda=\frac{q_t}{2\pi a}
+	\]
+	
+	Sendo $q_t$ a carga total que pode ser escrita como a diferença das cargas superior e inferior: $q_1-q_2$
+	Ou seja:
+	
+	\[
+	\textbf{F}=-k\frac{4Q(q_1-q_2) a^2}{2\pi a(r^2+a^2)^{3/2}}\textbf{j}
+	\]
+	
+	\[
+	\textbf{F}=-k\frac{2Q(q_1-q_2) a}{\pi(r^2+a^2)^{3/2}}\textbf{j}
+	\]
+	
+	\[
+	\textbf{F}=-\frac{Q(q_1-q_2) a}{2\epsilon_0\pi^2(r^2+a^2)^{3/2}}\textbf{j}
+	\]
+	
+	Ou seja:
+	
+	\[
+	\textbf{E}=-\frac{(q_1-q_2) a}{2\epsilon_0\pi^2(r^2+a^2)^{3/2}}\textbf{j}
+	\]
+	
+	\end{document}
