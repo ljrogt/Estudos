@@ -26,17 +26,60 @@
 			
 			\coordinate (A) at (0,0);
 			\coordinate (B) at (-5,-2.5);
+			\coordinate (C) at (1.5,2.598076211);
+			\coordinate (D) at (1.5,-2.598076211);
+			\coordinate (E) at (3,0);
 			
 			\draw[thick, domain=-3:3, samples=300] plot(\x, {sqrt(9-pow(\x,2))});
 			\draw[thick, domain=-3:3, samples=300] plot(\x, {-sqrt(9-pow(\x,2))});
 			
-			\draw[thick, domain=-5:0, samples=300] plot(\x,{0.5*\x});
+			\draw[thick,dashed, domain=-5:0, samples=300] plot(\x,{0.5*\x});
+			\draw[dashed] (A) -- (0,3) node[midway,left]{$a$};
+			\draw[->, thick] (C) -- (B) node[midway,above left]{$\textbf{r}_1$};
+			\draw[->, thick] (D) -- (B) node[midway, above right]{$\textbf{r}_2$};
 			
-			\fill (A) circle (2pt) node[above]{$C$};
-			\fill (B) circle (2pt) node[above]{$q$};
+			\draw[->, thick] (A)--(C) node[midway, right] {$\textbf{a}_1$};
 			
+			\draw[->, thick] (A)--(D) node[midway, right] {$\textbf{a}_2$};
+			
+			\draw (A)--(E) ;
+			
+			\fill (A) circle (2pt) node[above left]{$C$};
+			\fill (B) circle (2pt) node[above]{$Q$};
+			
+			\tkzMarkAngle(B,C,A);
+			\tkzLabelAngle[pos=1.2](B,C,A){$\theta$};
+			
+			\tkzMarkAngle[size=0.7](E,A,C);
+			\tkzLabelAngle[pos=1](E,A,C){$\beta$};
 			
 			
 		\end{tikzpicture}
 	\end{figure}
+	
+	A força $d\textbf{F}$ é então:
+	
+	\[
+	d\textbf{F}=d\textbf{F}_1+d\textbf{F}_2
+	\]
+	
+	\[
+	d\textbf{F}=k\frac{Qdq}{r^3}\textbf{r}_1-k\frac{Qdq}{r^3}\textbf{r}_2
+	\]
+	
+	Levando em consideração uma distribuição de carga $\lambda$:
+	
+	\[
+	\lambda=\frac{dq}{d\theta a}\Rightarrow dq=\lambda d\theta a
+	\]
+	
+	\[
+	d\textbf{F}=k\frac{Qdq}{r^3}\left(\textbf{r}_1-\textbf{r}_2\right)
+	\]
+	
+	\[
+	d\textbf{F}=k\frac{Q\lambda d\theta a}{r^3}\left(\textbf{r}_1-\textbf{r}_2\right)
+	\]
+	
+	
 \end{document}
