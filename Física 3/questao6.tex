@@ -29,6 +29,7 @@
 			\coordinate (C) at (1.5,2.598076211);
 			\coordinate (D) at (1.5,-2.598076211);
 			\coordinate (E) at (3,0);
+	
 			
 			\draw[thick, domain=-3:3, samples=300] plot(\x, {sqrt(9-pow(\x,2))});
 			\draw[thick, domain=-3:3, samples=300] plot(\x, {-sqrt(9-pow(\x,2))});
@@ -37,6 +38,7 @@
 			\draw[dashed] (A) -- (0,3) node[midway,left]{$a$};
 			\draw[->, thick] (C) -- (B) node[midway,above left]{$\textbf{r}_1$};
 			\draw[->, thick] (D) -- (B) node[midway, above right]{$\textbf{r}_2$};
+			\draw[->,thick] (A)--(B) node[midway, above]{$\textbf{r}$};
 			
 			\draw[->, thick] (A)--(C) node[midway, right] {$\textbf{a}_1$};
 			
@@ -57,28 +59,45 @@
 		\end{tikzpicture}
 	\end{figure}
 	
-	A força $d\textbf{F}$ é então:
+	A força $d\textbf{F}_1$ é então:
 	
 	\[
-	d\textbf{F}=d\textbf{F}_1+d\textbf{F}_2
+	d\textbf{F}_1=k\frac{Qdq}{r^3}\textbf{r}_1
+	\]
+	
+	Escrevendo $\textbf{r}_1$ em termos de $\textbf{i}$ e $\textbf{j}$:
+	
+	\[
+	\textbf{r}_1=\textbf{r}-\textbf{a}_1
 	\]
 	
 	\[
-	d\textbf{F}=k\frac{Qdq}{r^3}\textbf{r}_1-k\frac{Qdq}{r^3}\textbf{r}_2
+	\textbf{r}_1=-a\cos\beta\textbf{i}-a\sin\beta\textbf{j}+r\textbf{k}
 	\]
 	
-	Levando em consideração uma distribuição de carga $\lambda$:
+	Definindo uma distribuição de carga uniforme $\lambda$ na parte superior:
 	
 	\[
-	\lambda=\frac{dq}{d\theta a}\Rightarrow dq=\lambda d\theta a
+	\lambda=\frac{dq}{d\beta a}\Rightarrow dq=\lambda d\beta a
+	\]
+	
+	Ou seja:
+	
+	\[
+	d\textbf{F}_1=k\frac{Q\lambda d\beta a}{r^3}\left(-a\cos\beta\textbf{i}-a\sin\beta\textbf{j}+r\textbf{k}\right)
 	\]
 	
 	\[
-	d\textbf{F}=k\frac{Qdq}{r^3}\left(\textbf{r}_1-\textbf{r}_2\right)
+	\textbf{F}_1=k\frac{Q\lambda a}{r^3}\int_{0}^{\pi}d\beta\left(-a\cos\beta\textbf{i}-a\sin\beta\textbf{j}+r\textbf{k}\right)
 	\]
 	
 	\[
-	d\textbf{F}=k\frac{Q\lambda d\theta a}{r^3}\left(\textbf{r}_1-\textbf{r}_2\right)
+	\textbf{F}_1=k\frac{Q\lambda a}{r^3}\left[\int_{0}^{\pi}-a\cos\beta d\beta+\int_{0}^{\pi}-a\sin\beta d\beta\textbf{j}+\int_{0}^{\pi}rd\beta\textbf{k}\right]
+	\]
+	
+	
+	\[
+	\textbf{F}_1=k\frac{Q\lambda a}{r^3}\left[-a\sin\beta\left.\right|_{0}^\pi-(-\cos\beta\left.\right|_{0}^\pi)+\beta\left.\right|_{0}^\pi\right]
 	\]
 	
 	

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.25)  25 MAR 2026 20:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.2)  25 MAR 2026 21:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -907,7 +907,7 @@ Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
 Package: babel 2024/01/07 v24.1 The Babel package
 \babel@savecnt=\count323
 \U@D=\dimen317
-\l@unhyphenated=\language5
+\l@unhyphenated=\language7
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read3
@@ -917,7 +917,7 @@ Package babel Info: You haven't specified a language as a class or package
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/nil.ldf
 Language: nil 2024/01/07 v24.1 Nil language
-\l@nil=\language6
+\l@nil=\language8
 )) (./questao6.aux)
 \openout1 = `questao6.aux'.
 
@@ -999,12 +999,12 @@ Package caption Info: End \AtBeginDocument code.
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 38.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1023,22 +1023,24 @@ L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 33817 strings out of 476182
- 852682 string characters out of 5795595
- 1938975 words of memory out of 5000000
- 55165 multiletter control sequences out of 15000+600000
+ 33819 strings out of 476139
+ 852724 string characters out of 5794455
+ 1942975 words of memory out of 5000000
+ 55174 multiletter control sequences out of 15000+600000
  563642 words of font info for 57 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
+ 36 hyphenation exceptions out of 8191
  84i,8n,130p,1216b,1190s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on questao6.pdf (1 page, 60177 bytes).
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb>
+Output written on questao6.pdf (1 page, 79062 bytes).
 PDF statistics:
- 60 PDF objects out of 1000 (max. 8388607)
- 30 compressed objects within 1 object stream
+ 70 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
