@@ -1,0 +1,1085 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[top=3cm, bottom=2cm, left=2cm, right=3cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx, xcolor}
+\usepackage{tikz}
+\usepackage{subfig}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usepackage{scalerel, pict2e, tkz-euclide}
+\usetikzlibrary{calc, patterns, arrows.meta,shadows,external}
+
+\usepackage{pgfplots}
+\usepackage{cancel}
+\usepackage{enumitem}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{statistics,fillbetween}
+\usepackage{indentfirst}
+\usepackage{babel}[pt-br]
+
+\begin{document}
+	\title{Curso de Física Básica III: Eletromagnetismo - H. Moysés Nussenzveig}
+	\author{Leandro Júnior Cândido de Oliveira}
+	\maketitle
+	
+	
+	\section{lei de Coulomb: Carga Elétrica}
+	
+	\subsection{Conceitos}
+	
+	A carga elétrica é análoga a massa gravitacional. A matéria é naturalmente neutra, isso significa que as cargas positivas e negativas se anula.
+	
+	Um corpo se torna carregado quando acontece uma eletrização, gerando um desequilibrio de cargas positivas e negativas. Na eletrização um corpo inicialmente neutro transfere uma carga de um sinal para outro e após isso fica carregado eletricamente com o mesmo módulo e sinal contrario. funciona como um "saldo". Um tipo de eletrização é a por atrito, acontece quando dois materiais se esfregam, através desse tipo de eletrização é possivel comprovar que cargas de mesmo sinal se repelem e de sinais contrarios se atraem.
+	
+	O sinal da carga adquidida na eletrização dpende com qual corpo o material se esfrega.
+	
+	\subsection{Demostrações}
+	
+	Se duas porções de ambar forem eletrizadas através de atrito com uma lã pode-se verificar que se afastam uma da outra ao passo que se atraem de um vidro também eletrizado pela lã.
+	
+	Esse experimento mostra que cargas de mesmo sinal se repelem e de sinais opostos se atraem.
+	
+	\subsection{Problemas}
+	
+	\subsubsection{Problema 1}
+	
+	A carga elétrica é quantizada em múltiplos da carga elementar:
+	
+	$$e=1,6\cdot 10^{-19}C$$
+	
+	Um corpo possui carga total:
+	
+	$$Q=-4,8\cdot 10^{-18}$$
+	
+	\begin{enumerate}[label=\alph*)]
+		\item Quantos elétrons em excesso existem no corpo?
+		
+		\textit{\textbf{Resolução}}
+		
+		$$N_e=\left|\frac{Q}{e}\right|=\left|\frac{-4,8\cdot 10^{-18}}{1,6\cdot 10^{-19}}\right|$$
+		
+		$$\left|-3\cdot 10\right|=\left|-30\right|=30e^-$$
+		
+		\item A carga poderia ser resultado da falta de protrons?
+		
+		\textit{\textbf{Resolução}}
+		
+		Não, pois os elétrons é quem são transferidos
+	\end{enumerate}
+	
+	\section{Lei de Coulomb: Lei de Coulomb}
+	
+	\subsection{Conceitos}
+	
+	
+	Através de um experimento com uma balança de torção o Coulomb demonstrou que a força de interação entre duas cargas é inversamente proporcional ao quadrado da distância e diretamente proporcional ao produtos das cargas. Ou seja:
+	
+	$$\textbf{F}_{1(2)}=k\frac{q_1 q_2}{(r_{12})^2}\textbf{{r}}=-\textbf{F}_{2(1)}$$
+	
+	Sendo:
+	
+	\begin{itemize}
+		\item $q_1$, $q_2$ as cargas envolvidas.
+		\item $k$ a constante de proporcionalidade.
+		\item $r_{12}$ a distância entre as cargas.
+		\item \textbf{r} o vetor unitário da direção das cargas.
+	\end{itemize}
+	\subsection{Demostrações}
+	
+	Coulomb chegou nessa equação da seguinte forma:
+	
+	Dobrava a distância das esferas e media a força,  verificava que a força diminuia quatro vezes. Depois aumentava em três vezes  a distância e verificava após medir que a força diminuia em nove vezes. Logo ele deduzia que a força era proporcional ao inverso do quadrado da distância. 
+	
+	Depois disso ele fazia:
+	
+	Com duas cargas ele media a força de repulsão ou atração, depois ele verificava que se ele diminuísse pela metade uma das cargas a força caia pela metade também. E depois de diminuir pela metade as duas cargas ele verificava que a força diminuia em 4 vezes, se ele por exemplo diminuia uma carga em três vezes e a outra em 2 vezes ele media a força diminuir em 6 vezes. Logo ele deduziu que a força era proporcional ao produto das cargas.
+	
+	
+	Ou seja, a força de interação das cargas era ao mesmo tempo proporcional ao produto das cargas e inversamente proporcional ao quadrado da distância. Isso quer dizer que a força é proporcional ao produto dessas grandezas. 
+	
+	Quando duas grandezas são proporcionais significa que existe alguma constante que ao multiplicar uma dessas grandezas o resultado é a outra grandeza. Isso que ele pensou para gerar a igualdade, colocou uma constante de proporcionalidade k para conseguir formar a equação.
+	\subsection{Equações}
+	
+	Lei de Coulomb:
+	
+	$$\textbf{F}_{1(2)}=k\frac{q_1 q_2}{(r_{12})^2}\textbf{{r}}=-\textbf{F}_{2(1)}$$
+	\subsection{Problemas}
+	
+	\section{Lei de Coulomb: O Princípio de Superposição}
+	
+	\subsection{Conceitos}
+	
+	Por meio de experimentos em laboratório foi possível determinar que:
+	
+	Em um espaço em que há mais de duas cargas puntiformes, a força de interação eletromagnética sentida por cada carga é a soma algébrica de todas as forças de interação com as demais cargas, cada uma dada pela lei de coulomb. 
+	
+	Isto é:
+	
+	\[
+	\textbf{F}=\sum_{j\ne i} k\frac{q_iq_j}{(r_{ij})^2}\textbf{r}_{ij} =q_ik \sum_{j\ne i} \frac{q_j}{(r_{ij})^2}\textbf{r}_{ij}
+	\]
+	
+	Sendo aplicável para todas as cargas $q_i$.
+	
+	\subsection{Problemas}
+	\subsubsection{Problema 1}
+	Duas cargas puntiformes, $+q$ e $-q$, estão situadas no vácuo, separadas por uma distância $2d$. Com que força atuam sobre uma terceira carga $q'$, situada sobre a mediatriz do segmento que liga as duas cargas, a uma distância $D$ do ponto médio deste segmento?
+	
+	\textbf{Resolução}
+	
+	
+	
+	Primeiramente podemos escrever os vetores $\textbf{r}_{q'(+q)}$ e $\textbf{r}_{q'(-q)}$ (unitários) em termos de $\textbf{i}$ e $\textbf{j}$:
+	
+	
+	Para $\textbf{r}_{q'(+q)}$:
+	\[
+	\textbf{r}_{q'(+q)}=\cos{\left(\frac{3\pi}{2}-\theta\right)}\textbf{i}+\sin{\left(\frac{3\pi}{2}-\theta\right)}\textbf{j}
+	\]
+	
+	\begin{equation}
+		\textbf{r}_{q'(+q)}=\left(\cos\frac{3\pi}{2}\cos\theta+\sin\frac{3\pi}{2}\sin\theta\right)\textbf{i}+\left(\sin{\frac{3\pi}{2}}\cos{\theta}-\sin{\theta}\cos{\frac{3\pi}{2}}\right)\textbf{j}
+	\end{equation}
+	
+	Sendo que:
+	
+	\begin{equation}
+		\sin\theta=\frac{d}{r}
+	\end{equation}
+	
+	\begin{equation}
+		\cos\theta=\frac{D}{r}
+	\end{equation}
+	
+	Substituindo $(2)$ e $(3)$ em $(1)$:
+	
+	\[
+	\textbf{r}_{q'(+q)}=\left(\cancelto{0}{\frac{D}{r}\cos\frac{3\pi}{2}}+\frac{d}{r}\sin\frac{3\pi}{2}\right)\textbf{i}+\left(\frac{D}{r}\sin{\frac{3\pi}{2}}-\cancelto{0}{\frac{d}{r}\cos{\frac{3\pi}{2}}}\right)\textbf{j}
+	\]
+	\[
+	\textbf{r}_{q'(+q)}=\frac{d}{r}\sin\frac{3\pi}{2}\textbf{i}+\frac{D}{r}\sin{\frac{3\pi}{2}}\textbf{j}
+	\]
+	
+	
+	
+	Para $\textbf{r}_{q'(-q)}$:
+	
+	\[
+	\textbf{r}_{q'(-q)}=\cos{\left(\frac{3\pi}{2}+\theta\right)}\textbf{i}+\sin{\left(\frac{3\pi}{2}+\theta\right)}\textbf{j}
+	\]
+	
+	\begin{equation}
+		\textbf{r}_{q'(-q)}=\left(\cos\frac{3\pi}{2}\cos\theta-\sin\frac{3\pi}{2}\sin\theta\right)\textbf{i}+\left(\sin{\frac{3\pi}{2}}\cos{\theta}+\sin{\theta}\cos{\frac{3\pi}{2}}\right)\textbf{j}
+	\end{equation}
+	
+	Substituindo $(2)$ e $(3)$ em $(1)$:
+	
+	\[
+	\textbf{r}_{q'(-q)}=\left(\cancelto{0}{\frac{D}{r}\cos\frac{3\pi}{2}}-\frac{d}{r}\sin\frac{3\pi}{2}\right)\textbf{i}+\left(\frac{D}{r}\sin{\frac{3\pi}{2}}+\cancelto{0}{\frac{d}{r}\cos{\frac{3\pi}{2}}}\right)\textbf{j}
+	\]
+	\[
+	\textbf{r}_{q'(-q)}=-\frac{d}{r}\sin\frac{3\pi}{2}\textbf{i}+\frac{D}{r}\sin{\frac{3\pi}{2}}\textbf{j}
+	\]
+	
+	As forças de interação dos pares será:
+	
+	\[
+	\textbf{F}_{q'(+q)}=k\frac{q'q}{r^2}\textbf{r}_{q'(+q)}
+	\]
+	
+	\[
+	\textbf{F}_{q'(-q)}=k\frac{-q'q}{r^2}\textbf{r}_{q'(-q)}
+	\]
+	
+	Força total:
+	
+	\[
+	\textbf{F}_{q'(+q)}+\textbf{F}_{q'(-q)}=k\frac{q'q}{r^2}\textbf{r}_{q'(+q)}-k\frac{q'q}{r^2}\textbf{r}_{q'(-q)}
+	\]
+	\[
+	\textbf{F}_{q'(+q)}+\textbf{F}_{q'(-q)}=k\frac{q'q}{r^2}\left(\textbf{r}_{q'(+q)}-\textbf{r}_{q'(-q)}\right)
+	\]
+	\[
+	\textbf{F}_{q'(+q)}+\textbf{F}_{q'(-q)}=k\frac{q'q}{r^2}\left[\left(\frac{d}{r}\cancelto{-1}{\sin\frac{3\pi}{2}}\textbf{i}+\frac{D}{r}\cancelto{-1}{\sin\frac{3\pi}{2}}\textbf{j}\right)-\left(-\frac{d}{r}\cancelto{-1}{\sin\frac{3\pi}{2}}\textbf{i}+\frac{D}{r}\cancelto{-1}{\sin\frac{3\pi}{2}}\textbf{j}\right)\right]
+	\]
+	\[
+	\textbf{F}_{q'(+q)}+\textbf{F}_{q'(-q)}=k\frac{q'q}{r^2}\left[\frac{-2d}{r}\textbf{i}\right]
+	\]
+	
+	\begin{equation}
+		\textbf{F}=-k\frac{2dq'q}{r^3}\textbf{i}
+	\end{equation}
+	
+	Sendo que:
+	
+	\begin{equation}
+		r=\sqrt{D^2+d^2}
+	\end{equation}
+	
+	Inserindo $(6)$ em $(5)$:
+	
+	\[
+	\textbf{F}=-k\frac{2dq'q}{\left(D^2+d^ 2\right)^{3/2}}\textbf{i}=-\frac{1}{2\pi\epsilon_0}\frac{dq'q}{\left(D^2+d^ 2\right)^{3/2}}\textbf{i}
+	\]
+	
+	\subsubsection{Problema 2}
+	Uma carga $Q$ está distribuída uniformemente sobre um anel circular vertical de raio $\rho$ e de espessura desprezível. Qual é a força exercida sobre uma carga puntiforme $q$ situada sobre o eixo horizontal que passa pelo centro do anel, a uma distância $D$ do seu plano?
+	\textbf{Resolução}
+	
+	Primeiro podemos escrever o vetor que liga uma carga $dQ$ a carga $q$ como $\textbf{r}$:
+	
+	\[
+	\textbf{r}=\textbf{D}-\vec{\rho}=-\rho\cos\theta\textbf{i}-\rho\sin\theta\textbf{j}+D\textbf{k}
+	\]
+	
+	A força de interação $d\textbf{F}$ sofrida por $q$ é:
+	
+	\begin{equation}
+		d\textbf{F}=k\frac{qdQ}{r^3}\textbf{r}
+	\end{equation}
+	
+	$dQ$ é a carga referente a um certo comprimento de arco $\Delta\theta\rho$ quando $\Delta\theta\to d\theta$:
+	\[
+	\frac{dQ}{d\theta\rho}=\lambda\Rightarrow dQ=\lambda d\theta\rho
+	\]
+	
+	Sendo $\lambda$ a distribuição de carga por unidade de comprimento.
+	
+	Substituindo em $(7)$:
+	\[
+	d\textbf{F}=k\frac{q\lambda d\theta\rho}{r^3}\textbf{r}
+	\]
+	
+	Aplicando o princípio da superposição:
+	
+	\[
+	\textbf{F}=\int_{0}^{2\pi}k\frac{q\lambda d\theta\rho}{r^3}\textbf{r}
+	\]
+	\[
+	\textbf{F}=\int_{0}^{2\pi}k\frac{q\lambda d\theta\rho}{r^3}\left(-\rho\cos\theta\textbf{i}-\rho\sin\theta\textbf{j}+D\textbf{k}\right)
+	\]
+	\[
+	\textbf{F}=\frac{qk\lambda\rho}{r^3}\int_{0}^{2\pi}d\theta\left(-\rho\cos\theta\textbf{i}-\rho\sin\theta\textbf{j}+D\textbf{k}\right)
+	\]
+	\[
+	\textbf{F}=\frac{qk\lambda\rho}{r^3}I
+	\]
+	
+	Calculando a integral:
+	
+	\[
+	I=-\textbf{i}\rho\int_{0}^{2\pi}\cos\theta d\theta-\textbf{j}\rho\int_{0}^{2\pi}\sin\theta d\theta+\textbf{k}D\int_{0}^{2\pi}d\theta
+	\]
+	\[
+	I=-\textbf{i}\rho\left.\sin\theta\right|_{0}^{2\pi}-\textbf{j}\rho\left(\left.-\cos\theta\right|_{0}^{2\pi}\right)+\textbf{k}D\left.\theta\right|_{0}^{2\pi}
+	\]
+	\[
+	I=\cancelto{0}{-\textbf{i}\rho\left.\sin\theta\right|_{0}^{2\pi}}-\cancelto{0}{\textbf{j}\rho\left(\left.-\cos\theta\right|_{0}^{2\pi}\right)}+2\pi D\textbf{k}
+	\]
+	\[
+	I=2\pi D\textbf{k}
+	\]
+	
+	Continuando:
+	
+	\[
+	\textbf{F}=2\frac{qk\lambda\rho}{r^3}\pi D\textbf{k}
+	\]
+	
+	Agora calculando $r^3$:
+	
+	\[
+	r^2=\rho^2+D^2\Rightarrow r=\sqrt{\rho^2+D^2}\Rightarrow r^3=\left(\rho^2+D^2\right)^{3/2}
+	\]
+	
+	Ou seja:
+	\[
+	\textbf{F}=2\frac{qk\lambda\rho}{\left(\rho^2+D^2\right)^{3/2}}\pi D\textbf{k}
+	\]
+	\[
+	\textbf{F}=2\frac{1}{4\pi\epsilon_0}\frac{q\lambda\rho}{\left(\rho^2+D^2\right)^{3/2}}\pi D\textbf{k}
+	\]
+	\[
+	\textbf{F}=\frac{q\lambda\rho}{2\epsilon_0\left(\rho^2+D^2\right)^{3/2}} D\textbf{k}
+	\]
+	\[
+	\textbf{F}=\frac{QqD}{4\pi\epsilon_0\left(\rho^2+D^2\right)^{3/2}}\textbf{k}
+	\]
+	
+	\subsubsection{Problema 3}
+	
+	Mostre que a razão da atração eletrostática para a atração gravitacional entre um elétron e um próton é independente da distância entre eles, e calcule essa razão. 
+	
+	
+	\textbf{Resolução}
+	
+	Atração Gravitacional
+	\[
+	\textbf{F}_g=-G\frac{m_pm_e}{r^3}\textbf{r}
+	\]
+	
+	Atração Eletrostática:
+	\[
+	\textbf{F}_e=k\frac{e^2}{r^3}\textbf{r}
+	\]
+	
+	Sendo as forças sentidas pelo eletron em razão ao proton, e $\textbf{r}$ o vetor que sai do proton e chega no eletron. Portanto:
+	
+	\[
+	\frac{\textbf{F}_e}{\textbf{F}_g}=\frac{k\frac{e^2}{r^3}\textbf{r}}{-G\frac{m_pm_e}{r^3}\textbf{r}}
+	\]
+	\[
+	\frac{F_e}{F_g}=\frac{ke^2}{Gm_pm_e}=\]
+	
+	\[\frac{ 9 \times 1{0}^{ 9 }{(1.602176634 \times 10^{-19})}^{ 2 } }{ (6.6740831 \times 10^{-11})(1.67262189821 \times 10^{-27})(1.67492747121 \times 10^{-27}) }=1,2356000098\times 10^{36}
+	\]
+	
+	
+	
+	
+	\subsubsection{Problema 4}
+	Em 1 litro de hidrogênio gasoso, nas condições NTP: (a) Qual é a carga positiva total contida nas moléculas e neutralizada pelos elétrons? (b) Suponha que toda a carga positiva pudesse ser separada da negativa e mantida à distância de l m dela. Tratando essas duas cargas como puntiformes, calcule qual seria a força de atração eletrostática entre elas, em kgf. (c) Compare o resultado com uma estimativa da atração gravitacional da Terra sobre o Pão de Açúcar.
+	
+	\textbf{Resolução}
+	
+	(a)
+	
+	Quantidade de mols:
+	\[
+	\frac{1}{22,4}=\frac{5}{112} \text{mols}
+	\]
+	
+	Quantidade de moléculas :
+	
+	\[
+	\frac{5}{112}\cdot 6,022\cdot 10^{23}=2,69\cdot 10^{22}
+	\]
+	
+	Calculando a carga positiva:
+	
+	\[
+	Q=2\cdot 2,69\cdot 10^{22}\cdot 1,6\cdot 10^{-19}=8614,76\text{C}
+	\]
+	
+	(b)
+	
+	Calculando a força interativa através da lei de coulomb:
+	
+	\[
+	F=\frac{ 9 \times 1{0}^{ 9 } \times 8614.7{6}^{ 2 } }{ {1}^{ 2 } \times 9.80665 }=68.109579593 \times 1{0}^{ 15 }\text{kgf}
+	\]
+	
+	(c)
+	
+	Calculando a atração gravitacional da terra com o Pão de Açúcar:
+	
+	\[
+	F=\frac{ (6.6740831 \times 10^{-11}) \times 5.972 \times 1{0}^{ 24 } \times 580 \times 1{0}^{ 9 } }{  ( 6.370 \times 1{0}^{ 3 }{ ) }^{ 2 } \times 9.80665 }=570.86050382 \times 1{0}^{ 15 }\text{kgf}
+	\]
+	
+	\subsubsection{Problema 5}
+	
+	O modelo de Bohr para o átomo de hidrogênio pode ser comparado ao sistema Terra-Lua, em que o papel da Terra é desempenhado pelo próton e o da Lua pelo elétron, e a atração gravitacional é substituída pela eletrostática. A distância média entre o elétron e o próton no átomo é da ordem de 0,5 Å. (a) Admitindo esse modelo, qual seria a frequência de revolução do elétron em torno do próton? Compare-a com a frequência da luz visível, (b) Qual seria a velocidade do elétron na sua órbita? É adequado usar a eletrostática, nesse caso? É adequado usar a mecânica não relativística?
+	
+	
+	\textbf{Resolução}
+	\par
+	(a)
+	
+	A força centrípeta do proton para o elétron é substituida pela eletrostática:
+	
+	\[
+	F_c=F_e=\frac{mv^2}{r}=\frac{ke^2}{r^2}
+	\]
+	
+	O velocidade seria então:
+	
+	\[
+	v=\sqrt{\frac{ke^2}{mr}}=2,25 \times 1{0}^{ 6 }\text{m/s}
+	\]
+	
+	Relacionando velocidade com a frequância:
+	
+	\[
+	v=2\pi rf\Rightarrow f=\frac{v}{2\pi r}=7,17 \times 1{0}^{ 15 }\text{hz}
+	\]
+	
+	Relacionando com a frequência da luz visível ($f_v=4\times 10^{14}$):
+	
+	\[
+	\frac{f}{f_v}=\frac{7,17 \times 1{0}^{ 15 }}{4\times 10^{14}}=17,925
+	\]
+	
+	(b)
+	
+	\subsubsection{Problema 6}
+	
+	Uma carga negativa fica em equilíbrio quando colocada no ponto médio do segmento de reta que une duas cargas positivas idênticas. Mostre que essa posição de equilíbrio é estável para pequenos deslocamentos da carga negativa em direções perpendiculares ao segmento, mas que é instável para pequenos deslocamentos ao longo dele.
+	
+	\textbf{Resolução}
+	\begin{figure}[ht] % 'ht' sugere que a imagem fique "aqui" (here) ou no "topo" (top)
+		\centering
+		\begin{tikzpicture}[
+			% Estilos para os círculos
+			ponto_azul/.style={circle, draw=black, fill=black, inner sep=1.5pt},
+			ponto_cinza/.style={circle, draw=black, fill=black, inner sep=1.5pt}
+			]
+			
+			% Coordenadas
+			\coordinate (B) at (0,0);
+			\coordinate (C) at (4,0);
+			\coordinate (A) at (8,0);
+			
+			% Desenha a linha horizontal que une as cargas
+			\draw[thick, gray!80!black] (B) -- (A);
+			
+			% Desenha as cargas externas (A e B)
+			\node[ponto_azul] at (B) {};
+			\node[black, above=3pt] at (B) {$q_+$};
+			
+			\node[ponto_azul] at (A) {};
+			\node[black, above=3pt] at (A) {$q_+$};
+			
+			% Desenha a carga central (f_C)
+			\node[ponto_cinza] at (C) {};
+			\node[black, above=3pt] at (C) {$q_{-}$};
+			
+		\end{tikzpicture}
+		\caption{Representação das cargas em equilíbrio.}
+		\label{fig:cargas em equilibrio}
+	\end{figure}
+	
+	No esquema inicial, a soma das forças eletrostática é nula, pois a atração imposta pelas duas cargas positivas é cancelada fazendo com que a carga negativa permaneça no ponto médio, que pertence a reta mediana ao segmento das cargas positivas.
+	
+	
+	\begin{figure}[ht]
+		
+		\centering
+		\begin{tikzpicture}[scale=1.2]
+			
+			% Pontos
+			\coordinate (C) at (0,0);
+			\coordinate (K) at (5,0);
+			\coordinate (D) at (10,0);
+			\coordinate (B) at (5,4);
+			\coordinate (H) at (5,2);
+			\coordinate (G) at (4,3.2);
+			\coordinate (I) at (6,3.2);
+			\coordinate (Q) at (1,0.8);
+			\coordinate (W) at (9,0.8);
+			
+			% Pontos desenhados
+			\fill (C) circle (2pt) node[below left] {$q_+$};
+			\fill (D) circle (2pt) node[below right] {$q_+$};
+			\fill (B) circle (2pt) node[above] {$q_-$};
+			
+			% Linha base CD
+			\draw[dashed] (C) -- (D);
+			
+			% Linhas inclinadas (tracejadas)
+			
+			\draw[dashed] (C) -- (B);
+			\draw[dashed] (B) -- (D);
+			
+			\node[above left] at (2.5,2) {$r$};
+			\node[above right] at (7.5,2) {$r$};
+			
+			% Linha vertical (altura)
+			\draw[dashed] (H) -- (K);
+			
+			% Setas das forças
+			\draw[->,thick] (B) -- (G) node[midway, above left] {$\textbf{F}_1$};
+			\draw[->,thick] (B) -- (I) node[midway, above right] {$\textbf{F}_2$};
+			
+			% Vetores das direções
+			
+			\draw[->,thick] (C) -- (Q) node[midway, above left] {$\textbf{r}_1$};
+			
+			\draw[->,thick] (D) -- (W) node[midway, above right] {$\textbf{r}_2$};
+			
+			
+			% Força vertical
+			\draw[->,thick] (B) -- (H) node[midway, right] {$\textbf{F}$};
+			
+			
+			
+			% Altura
+			\node at (5.3,1.8) {$\Delta y$};
+			\node at (5,-0.3) {$h$};
+			
+			% Ângulo theta
+			\tkzMarkAngle[size=.5cm,thick](K,C,B);
+			\tkzLabelAngle[color=black,pos=0.7](K,C,B){\textbf{$\theta$}};
+			
+		\end{tikzpicture}
+		
+		\caption{Carga $q_-$ com deslocamento $\Delta y$ vertical.}
+	\end{figure}
+	
+	
+	Digamos que a carga $q_-$ tenha um deslocamento $\Delta y$ vertical. A resultante das forças será:
+	
+	
+	\[
+	\textbf{F}_1+\textbf{F}_2=-\frac{kq^2}{r^2}\textbf{r}_1-\frac{kq^2}{r^2}\textbf{r}_2
+	\]
+	
+	\[
+	\textbf{F}_1+\textbf{F}_2=-\frac{kq^2}{r^2}\left(\textbf{r}_1+\textbf{r}_2\right)
+	\]
+	
+	Definindo $\textbf{r}_1$:
+	
+	\[
+	\textbf{r}_1=\cos\theta \textbf{i}+\sin\theta \textbf{j}
+	\]
+	
+	Definindo $\textbf{r}_2$:
+	
+	\[
+	\textbf{r}_2=\cos{\left(\pi-\theta\right)} \textbf{i}+\sin{\left(\pi-\theta\right)} \textbf{j}
+	\]
+	
+	\[
+	\cos{\left(\pi-\theta\right)}=\cos\pi\cos\theta+\sin\pi\sin\theta=-\cos\theta
+	\]
+	
+	\[
+	\sin\left(\pi-\theta\right)=\sin\pi\cos\theta-\sin\theta\cos\pi=\sin\theta
+	\]
+	
+	\[
+	\textbf{r}_2=-\cos\theta \textbf{i}+\sin\theta \textbf{j}
+	\]
+	
+	
+	\begin{equation}
+		\textbf{r}_1+\textbf{r}_2=2\sin\theta\textbf{j}
+	\end{equation}
+	
+	Ou seja,
+	
+	\[
+	\textbf{F}_1+\textbf{F}_2=-\frac{kq^2}{r^2}2\sin\theta\textbf{j}=-\frac{2kq^2\Delta y}{r^3}\textbf{j}
+	\]
+	
+	Essa equação nos mostra que para variações muito pequenas a força eletrostática tende a zero, fazendo com que o sistema permaneça estável. Outra conclusão é que a força é paralela a mediana, isso significa que a carga sempre permanece na mediana do segmento que une as duas cargas positivas. A carga é atraída para o ponto de origem, digamos que a carga tende a voltar a posição inicial. 
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[scale=1.2]
+			\coordinate (A) at (-5,0);
+			\coordinate (B) at (5,0);
+			\coordinate (C) at (-2.3,0);
+			\coordinate (O) at (0,0);
+			\coordinate (r1) at (-4.5,0);
+			\coordinate (r2) at (4.5,0);
+			\coordinate (f1) at (-3.3,0);
+			\coordinate (f2) at (-1.3,0);
+			\coordinate (h) at (-2.3,-0.4);
+			\coordinate (j) at (0,-0.4);
+			\coordinate (f) at (-5,1);
+			\coordinate (g) at (0,1);
+			
+			\fill (A) circle (2pt) node[below left]{$q_+$};
+			\fill (B) circle (2pt) node[below right]{$q_+$};
+			\fill (C) circle (2pt) node[above]{$q_-$};
+			\fill (O) circle (2pt) node[above right]{O};
+			
+			
+			
+			\draw[dashed] (r1)--(r2);
+			\draw[->, thick] (A) -- (r1) node[above]{$\textbf{r}_1$};
+			\draw[->, thick] (B) -- (r2) node[above]{$\textbf{r}_2$};
+			\draw[->, thick] (C) --  (f1) node[above]{$\textbf{F}_1$};
+			\draw[->, thick] (C) --  (f2) node[above]{$\textbf{F}_2$};
+			\draw[dashed] (C)--(h);
+			\draw[dashed] (O)--(j);
+			\draw[dashed] (f)--(A);
+			\draw[dashed] (g)--(O);
+			\draw[thick] (f)--(g) node[midway,above]{$r$};
+			\draw[thick] (h)--(j) node[midway,below]{$\Delta x$};
+			
+			
+			
+			
+		\end{tikzpicture}
+		\caption{Carga $q_-$ com variação $\Delta x$ horizontal. }
+	\end{figure}
+	
+	
+	A força resultante $\textbf{F}$ será:
+	
+	\[
+	\textbf{F}_1+\textbf{F}_2=-\frac{kq^2}{\left(r-\Delta x\right)^2}\textbf{r}_1-\frac{kq^2}{\left(r+\Delta x\right)^2}\textbf{r}_2
+	\]
+	
+	\[
+	\textbf{F}=-kq^2\left[\frac{1}{\left(  r  -  \Delta x \right)^2}\textbf{r}_1  + \frac{1}{\left(r+\Delta x\right)^2}\textbf{r}_2 \right]
+	\]
+	
+	\[
+	\textbf{F}=-kq^2\left[\frac{\left(r+\Delta x\right)^2}{\left(r+\Delta x\right)^2\left(  r  -  \Delta x \right)^2}\textbf{r}_1  - \frac{\left(  r  -  \Delta x \right)^2}{\left(r+\Delta x\right)^2\left(  r  -  \Delta x \right)^2}\textbf{r}_1 \right]
+	\]
+	
+	\[
+	\textbf{F}=-\frac{kq^2 4r\Delta x}{\left(r+\Delta x\right)^2\left(  r  -  \Delta x \right)^2}\textbf{i}
+	\]
+	
+	Essa equação nos mostra por outro lado que a carga tende a ser atraída para a carga positiva que está mais próxima dela, ou seja, não tende a voltar para posição inicial. Não se mantendo estável.\\ \\ \\
+	
+	\subsubsection{Problema 7}
+	
+	Duas esferinhas idênticas de massa $m$ estão carregadas com carga $q$ e suspensas por fios isolantes de comprimento $l$. O ângulo de abertura resultante é $2\theta$ (figura).\\ \\
+	
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (-1.5,-2);
+			\coordinate (C) at (1.5,-2);
+			
+			
+			\fill (B) circle (2pt) node[below]{$q$};
+			\fill (C) circle (2pt) node[below]{$q$};
+			
+			\draw[thick] (A)--(B) node[midway, left]{$l$};
+			\draw[thick] (A)--(C);
+			
+			\tkzMarkAngle[size=0.5](B,A,C);
+			\tkzLabelAngle[pos=0.7](B,A,C) {$2\theta$};
+		\end{tikzpicture}
+		\caption{Ilustração do esquema.}
+		
+	\end{figure}
+	
+	
+	
+	(a) Mostre que 
+	
+	\[
+	q^2\cos\theta=16\pi\epsilon_0l^2mg\sin^3\theta
+	\]
+	
+	\par
+	
+	(b) Se $m=1$ g, $l=20$ cm e $\theta=30^\circ$, qual é o valor de $q$?
+	
+	\textbf{Resolução}:
+	
+	(a)
+	
+	Analisando todas as forças impostas sobre a carga da esquerda:
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (-1,0);
+			\coordinate (C) at (0,-1);
+			\coordinate (D) at (1,1);
+			
+			\fill (A) circle (2pt) node[above]{$q$};
+			
+			\draw[->, thick] (A)--(B) node[above right]{$\textbf{F}_e$};
+			\draw[->, thick] (A)--(C) node[below right]{$\textbf{F}_g$};
+			\draw[->, thick] (A)--(D) node[above left]{$\textbf{T}$};
+		\end{tikzpicture}
+		\caption{Carga da esquerda.}
+		
+	\end{figure}
+	
+	
+	Sendo $\textbf{r}$ o vetor que vai da carga da esquerda para a carga da direita temos:
+	
+	\[
+	\textbf{F}_e=-\frac{kq^2}{r^2}\hat{\textbf{r}}=-\frac{kq^2}{r^2}\textbf{i}=-\frac{kq^2}{4l^2\sin^2\theta}\textbf{i}
+	,\]
+	
+	\[
+	\textbf{T}_1=-(\textbf{F}_e+\textbf{F}_g)
+	\]
+	
+	e
+	
+	\[
+	\textbf{F}_g=-mg\textbf{j}
+	\]
+	
+	
+	Sobre o $\theta$ podemos escrever:
+	
+	\[
+	\tan\theta=\frac{\left|\textbf{F}_e\right|}{\left|\textbf{F}_g\right|}
+	\]
+	
+	\[
+	\frac{\sin\theta}{\cos\theta}=\frac{kq^2}{4l^2mg\sin^2\theta}
+	\]
+	
+	\[
+	\frac{1}{k}4l^2mg\sin^3\theta=q^2\cos\theta
+	\]
+	
+	\[
+	16\pi\epsilon_0l^2mg\sin^3\theta=q^2\cos\theta
+	\]
+	
+	\par
+	(b)
+	
+	\[
+	16\pi\epsilon_0(20\text{ cm})^2(1\text{ g})(9,8\text{ m/s}^2)\sin^3{\frac{\pi}{6}}=q^2\cos\frac{\pi}{6}
+	\]
+	
+	\[
+	q=\sqrt{\frac{16\pi\epsilon_0(20\text{ cm})^2(1\text{ g})(9,8\text{ m/s}^2)\sin^3{\frac{\pi}{6}}}{\cos\frac{\pi}{6}}}=1,5857746285 \times 1{0}^{  - 7 }\text{C}
+	\]
+	
+	\subsubsection{Problema 8}
+	
+	Cargas $q$, $2q$ e $3q$ são colocadas nos vértices de um triângulo equilátero de lado $a$ (figura). Uma carga $Q$, de mesmo sinal que as outras três, é colocada no centro do triângulo. Obtenha a força resultante sobre $Q$ (em módulo, direção e sentido).
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (4,0);
+			\coordinate (C) at (2,3.4642);
+			\coordinate (D) at (2,1.1546);
+			
+			
+			\fill (A) circle (2pt) node[above left]{$3q$};
+			\fill (B) circle (2pt) node[below right]{$q$};
+			\fill (C) circle (2pt) node[above]{$2q$};
+			\fill (D) circle (2pt) node[above right]{$Q$};
+			
+			\draw[] (A)--(B);
+			\draw[] (A)--(C) node[midway, above left]{$a$};
+			\draw[] (C)--(B);
+			
+			
+		\end{tikzpicture}
+		\caption{Ilustração do problema.}
+	\end{figure}
+	
+	\textbf{Resolução}
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (4,0);
+			\coordinate (C) at (2,3.4642);
+			\coordinate (D) at (2,1.1546);
+			\coordinate (E) at (0.5047372244138, 0.2913847996541);
+			\coordinate (F) at (4-0.5047372244138, 0.2913847996541);
+			\coordinate (G) at (2, 2.8813923411807);
+			\coordinate (H) at (2, 0.1894805473079);
+			\coordinate (I) at (1.1642480456226, 1.637274039823);
+			\coordinate (J) at (2.8357519543774, 1.637274039823);
+			\coordinate (K) at (3.7320508075689, 1.1546);
+			
+			
+			\fill (A) circle (2pt) node[above left]{$3q$};
+			\fill (B) circle (2pt) node[below right]{$q$};
+			\fill (C) circle (2pt) node[above]{$2q$};
+			\fill (D) circle (2pt) node[above]{$Q$};
+			
+			\draw[dashed] (A)--(B);
+			\draw[dashed] (A)--(C) node[midway, above left]{$a$};
+			\draw[dashed] (C)--(B);
+			
+			\draw[->,thick] (A)--(E) node[right]{$\textbf{r}_1$};
+			\draw[->,thick] (B)--(F) node[left]{$\textbf{r}_2$};
+			\draw[->,thick] (C)--(G) node[below]{$\textbf{r}_3$};
+			\draw[->,thick] (D)--(H) node[left]{$\textbf{F}_3$};
+			\draw[->,thick] (D)--(J) node[below]{$\textbf{F}_1$};
+			\draw[->,thick] (D)--(I) node[below]{$\textbf{F}_2$};
+			\draw[->,thick] (D)--(K) node[above]{$\textbf{F}$};
+		\end{tikzpicture}
+	\end{figure}
+	
+	Escrevendo os vetores $\textbf{r}_1, \textbf{r}_2,\textbf{r}_3$ em termos de $\textbf{i}$ e $\textbf{j}$:
+	
+	\[
+	\textbf{r}_1=\cos\frac{\pi}{6}\textbf{i}+\sin\frac{\pi}{6}\textbf{j}=\frac{\sqrt{3}}{2}\textbf{i}+\frac{1}{2}\textbf{j}
+	\]
+	
+	\[
+	\textbf{r}_2=\cos\left(\pi-\frac{\pi}{6}\right)\textbf{i}+\sin\left(\pi-\frac{\pi}{6}\right)\textbf{j}=-\frac{\sqrt{3}}{2}\textbf{i}+\frac{1}{2}\textbf{j}
+	\]
+	
+	\[
+	\textbf{r}_3=\cos\left(2\pi-\frac{\pi}{2}\right)\textbf{i}+\sin\left(2\pi-\frac{\pi}{2}\right)\textbf{j}=0\textbf{i}-\textbf{j}
+	\]
+	
+	A resultante das forças:
+	
+	\[
+	\textbf{F}=\textbf{F}_1+\textbf{F}_2+\textbf{F}_3
+	\]
+	
+	\[
+	\textbf{F}=k\frac{3Qq}{r^2}\textbf{r}_1+k\frac{Qq}{r^2}\textbf{r}_2+k\frac{2Qq}{r^2}\textbf{r}_3
+	\]
+	
+	\[
+	\textbf{F}=k\frac{Qq}{r^2}\left(3\textbf{r}_1+\textbf{r}_2+2\textbf{r}_3\right)
+	\]
+	
+	\[
+	\textbf{F}=k\frac{Qq}{r^2}\left[3\left(\frac{\sqrt{3}}{2}\textbf{i}+\frac{1}{2}\textbf{j}\right)-\frac{\sqrt{3}}{2}\textbf{i}+\frac{1}{2}\textbf{j}-2\textbf{j}\right]
+	\]
+	
+	\[
+	\textbf{F}=k\frac{Qq}{r^2}\left[\frac{3\sqrt{3}}{2}\textbf{i}+\frac{3}{2}\textbf{j}-\frac{\sqrt{3}}{2}\textbf{i}+\frac{1}{2}\textbf{j}-2\textbf{j}\right]
+	\]
+	
+	\[
+	\textbf{F}=k\frac{Qq\sqrt{3}}{r^2}\textbf{i}
+	\]
+	
+	Escrevendo $r$ em termos de $a$:
+	
+	\[
+	\cos\frac{\pi}{6}=\frac{a}{2r}=\frac{\sqrt{3}}{2}
+	\]
+	
+	\[
+	r=\frac{a}{\sqrt{3}}\Rightarrow r^2=\frac{a^2}{3}
+	\]
+	
+	Ou seja:
+	
+	\[
+	\textbf{F}=\frac{3Qq\sqrt{3}}{4\pi \epsilon_0a^2}\textbf{i}
+	\]
+	
+	\subsubsection{Problema 9}
+	
+	Uma carga $Q$ é distribuída uniformemente sobre um fio semicircular de raio $a$. Calcule a força com que atua sobre uma carga de sinal oposto $-q$ colocada no centro (figura).
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (-1,0);
+			\coordinate (C) at (0,1);
+			\coordinate (D) at (1,0);
+			
+			\node (A){$-q$};
+			
+			
+			\draw[thick, domain=-3:3, samples=100] plot(\x, {sqrt(9-pow(\x,2)});
+		\end{tikzpicture}
+		\caption{Carga $-q$ no centro da circunferência.}
+		
+	\end{figure}
+	
+	\textbf{Resolução}
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at ({(3*sqrt(3)*pow(2,-1)},{3*pow(2,-1)});
+			\coordinate (C) at ({5*sqrt(3)*pow(4,-1)},{5*pow(4,-1)});
+			\coordinate (D) at ({sqrt(3)*pow(2,-1)},{pow(2,-1)});
+			\coordinate (E) at (0,3);
+			\coordinate (F) at (3,0);
+			
+			\draw[thick, domain=-3:3, samples=100] plot(\x, {sqrt(9-pow(\x,2)});
+			
+			\fill (B) circle (2pt) node[right]{$dQ$};
+			\fill (A) circle (1pt) node[left]{$-q$};
+			
+			
+			\draw[->, thick] (B)--(C) node[above left]{$\textbf{r}$};
+			\draw[->, thick] (A)--(D) node[above]{$d\textbf{F}$};
+			\draw[dashed] (A)--(E) node[midway, left]{$a$};
+			
+			\tkzMarkAngle[color=black, size=0.5](F,A,B)
+			\tkzLabelAngle[pos=0.7](F,A,B) {$\theta$}
+			
+			
+		\end{tikzpicture}
+		
+	\end{figure}
+	
+	
+	Imaginando que se tenha uma variação $d\theta$ no ângulo $\theta$ para que exista em comprimento de arco $d\theta a$ com a carga $dQ$ a distribuição de carga por unidade de comprimento será:
+	
+	\[
+	\lambda=\frac{dQ}{d\theta a}\Rightarrow dQ=\lambda d\theta a
+	\]
+	
+	Além disso, o vetor unitário $\textbf{r}$ pode ser escrito em termos de $\textbf{i}$ e $\textbf{j}$ como:
+	
+	\[
+	\textbf{r}=\cos\left(\pi+\theta\right)\textbf{i}+\sin\left(\pi+\theta\right)\textbf{j}
+	\]
+	
+	\[
+	\textbf{r}=\left(\cancelto{-1}{\cos\pi}\cos\theta-\cancelto{0}{\sin\pi}\sin\theta\right)\textbf{i}+\left(\cancelto{0}{\sin\pi}\cos\theta+\sin\theta\cancelto{-1}{\cos\pi}\right)\textbf{j}
+	\]
+	
+	\[
+	\textbf{r}=-\cos\theta\textbf{i}-\sin\theta\textbf{j}
+	\]
+	
+	A força $d\textbf{F}$ pode então ser escrita por:
+	
+	\[
+	d\textbf{F}=-k\frac{qdQ}{a^2}\textbf{r}
+	\]
+	
+	\[
+	d\textbf{F}=-k\frac{q\lambda d\theta \cancel{a}}{a^{\cancel{2}}}\left(-\cos\theta\textbf{i}-\sin\theta\textbf{j}\right)
+	\]
+	
+	\[
+	d\textbf{F}=k\frac{q\lambda d\theta}{a}\cos\theta\textbf{i}+k\frac{q\lambda d\theta}{a}\sin\theta\textbf{j}
+	\]
+	
+	Portanto
+	
+	\[
+	\textbf{F}=\int_{0}^{\pi}k\frac{q\lambda d\theta}{a}\cos\theta\textbf{i}+\int_{0}^{\pi}k\frac{q\lambda d\theta}{a}\sin\theta\textbf{j}
+	\]
+	
+	\[
+	\textbf{F}=\frac{q\lambda k}{a}\textbf{i}\int_{0}^{\pi}d\theta\cos\theta+\frac{q\lambda k}{a}\textbf{j}\int_{0}^{\pi}d\theta\sin\theta
+	\]
+	
+	
+	\[
+	\textbf{F}=\cancelto{0}{\frac{q\lambda k}{a}\textbf{i}\left(\sin\theta\left.\right|_{0}^\pi\right)}+\frac{q\lambda k}{a}\textbf{j}\cancelto{2}{\left(\left.-\cos\theta\right|_{0}^\pi\right)}
+	\]
+	
+	\[
+	\textbf{F}=\frac{2q\lambda k}{a}\textbf{j}
+	\]
+	
+	Como \[\lambda=\frac{Q}{\pi a}\] então 
+	
+	\[
+	\textbf{F}=\frac{q Q}{2\pi^2\epsilon_0 a^2}\textbf{j}
+	\]
+	
+	\subsubsection{Problema 10}
+	
+	Um fio retilíneo muito longo (trate-o como infinito) está eletrizado com uma densidade linear de carga $\lambda$. Calcule a força com que atua sobre uma carga puntiforme $q$ colocada à distância $\rho$ do fio. Sugestão: tome a origem em $O$ (figura) e o fio como eixo $z$. Exprima a contribuição de um elemento $dz$ do fio à distância $z$ da origem em função do ângulo $\theta$ da figura. Use argumentos de simetria.\\ \\ \\
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (0,-4);
+			\coordinate (C) at (0,1);
+			\coordinate (D) at (3,0);
+			\coordinate (E) at (0,-3);
+			\coordinate (F) at (-0.2,-2.7);
+			\coordinate (G) at (0.2,-2.7);
+			\coordinate (H) at (-0.2,-3.3);
+			\coordinate (I) at (0.2,-3.3);
+			
+			
+			\fill (A) circle (2pt) node[left]{$O$};
+			\fill (D) circle (2pt) node[right]{$q$};
+			
+			\draw (B) -- (C);
+			\draw (D) -- (A) node[midway, above]{$\rho$};
+			\draw (E) -- (D);
+			\draw (F) -- (G);
+			\draw (H) -- (I);
+			
+			\tkzMarkAngle[size=0.6](A,D,E);
+			\tkzLabelAngle[pos=0.8](A,D,E){$\theta$};
+			
+			\node[above left] at (0,-1.5) {$z$};
+			\node[left, scale=0.9] at (E) {$dz$};
+			
+		\end{tikzpicture}
+		\caption{Ilustração do problema 10.}
+	\end{figure}
+	
+	
+	\textbf{Resolução}
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (0,-4);
+			\coordinate (C) at (0,1);
+			\coordinate (D) at (3,0);
+			\coordinate (E) at (0,-3);
+			\coordinate (F) at (-0.2,-2.7);
+			\coordinate (G) at (0.2,-2.7);
+			\coordinate (H) at (-0.2,-3.3);
+			\coordinate (I) at (0.2,-3.3);
+			\coordinate (J) at (0.5,-2.5);
+			\coordinate (K) at (2,-1);
+			
+			
+			\fill (A) circle (2pt) node[left]{$O$};
+			\fill (D) circle (2pt) node[right]{$q$};
+			
+			\draw (B) -- (C);
+			\draw[dashed] (D) -- (A) node[midway, above]{$\rho$};
+			\draw[dashed] (E) -- (D);
+			\draw (F) -- (G);
+			\draw (H) -- (I);
+			
+			%vetores
+			\draw[->, thick] (E)--(J) node[above left]{$\textbf{r}$};
+			\draw[->, thick] (D)--(K) node[above left]{$d\textbf{F}$};
+			
+			\tkzMarkAngle[size=0.6](A,D,E);
+			\tkzLabelAngle[pos=0.8](A,D,E){$\theta$};
+			
+			\node[above left] at (0,-1.5) {$z$};
+			\node[left, scale=0.9] at (E) {$dz$};
+			
+		\end{tikzpicture}
+	\end{figure}
+	
+	Escrevendo $\textbf{r}$ em termos de $\textbf{i}$ e $\textbf{j}$:
+	
+	\[
+	\textbf{r}=\cos\left(\frac{\pi}{2}-\theta\right)\textbf{i}+\sin\left(\frac{\pi}{2}-\theta\right)\textbf{j}
+	\]
+	
+	\[
+	\textbf{r}=\left(\cancelto{0}{\cos\frac{\pi}{2}\cos\theta}+\sin\frac{\pi}{2}\sin\theta\right)\textbf{i}+\left(\sin\frac{\pi}{2}\cos\theta-\sin\theta\cos\frac{\pi}{2}\right)\textbf{j}
+	\]
+	
+	\[
+	\textbf{r}=\sin\theta\textbf{i}+\cos\theta\textbf{j}
+	\]
+	
+	Sabendo que a carga está distribuída de maneira uniforme por todo o fio, temos que:
+	
+	\[
+	\lambda = \frac{dQ}{dz}\Rightarrow dQ=\lambda dz
+	\]
+	
+	Temos que a força $d\textbf{F}$ sentida pela carga $q$ é:
+	
+	\[
+	d\textbf{F}=-k\frac{qdQ}{r^2}\textbf{r}
+	\]
+	
+	\[
+	d\textbf{F}=-k\frac{q\lambda dz}{r^2}\left(\sin\theta\textbf{i}+\cos\theta\textbf{j}\right)
+	\]
+	
+	Ou seja,
+	
+	\[
+	\textbf{F}=\int_{min}^{max}\]
+	
+\end{document}
