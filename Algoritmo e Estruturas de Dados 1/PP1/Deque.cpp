@@ -1,4 +1,3 @@
-
 #include <iostream>
 
 template <typename T>
@@ -39,6 +38,30 @@ public:
 		std::cout<<item;
 	}
 
+
+};
+
+template <typename T>
+class Navegador{
+private:
+	No<T>* atual;
+public:
+
+	Navegador(No<T>* inicio){
+		atual=inicio;
+	}
+
+	void irProximo(){
+		atual=atual->informarProx();
+	}
+
+	T solicitarItem(){
+		return atual->informarItem();
+	}
+
+	bool final(No<T>* final){
+		return atual==final;
+	}
 
 };
 
@@ -115,15 +138,16 @@ public:
 	}
 
 	void print(){
-		No<T>* primeiro=cabeca->informarProx();
-		while(primeiro!=cabeca){
-			primeiro->print();
-			primeiro=primeiro->informarProx();
-
+		Navegador<T> nav =Navegador(cabeca->informarProx());
+		while(!nav.final(cabeca)){
+			std::cout<<nav.solicitarItem();
+			nav.irProximo();
 		}
 		std::cout<<"\n";
+		
 	}
 };
+
 
 
 int main(){
