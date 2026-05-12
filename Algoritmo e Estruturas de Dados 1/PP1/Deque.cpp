@@ -155,6 +155,7 @@ int main(){
 	lista_numeros.adicionarNoFinal("Leandro");
 	lista_numeros.adicionarNoComeco("Junior");
 	lista_numeros.adicionarNoFinal("Candido");
+	lista_numeros.adicionarNoFinal("Oliveira");
 
 	lista_numeros.print();
 
@@ -166,3 +167,4 @@ int main(){
 
 	lista_numeros.print();
 }
+
