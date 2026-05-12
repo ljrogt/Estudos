@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 template <typename T>
 class No{
@@ -149,14 +150,41 @@ public:
 };
 
 struct Comando{
-	char indicador;
+	std::string indicador;
 	int cod;	
 };
+
+Comando tratarDado(const std::string dado){
+	std::string codigo="";
+	std::string indicador=" ";
+	for(int i=0;i<dado.length();i++){
+		std::string carac(1,dado[i]);
+		try{
+			int teste=std::stoi(carac);
+			codigo+=dado[i];
+		}
+
+		catch(...){
+			if(carac!=" "){
+				indicador=dado[i];
+			}
+		}
+	}
+	Comando c={indicador, stoi(codigo)};
+	return c;
+}
+void mostrarCodigo(const Comando codigo){
+	std::cout<<"("<<codigo.indicador<<","<<codigo.cod<<")"<<"\n";
+}
+
+
 
 
 
 
 int main(){
-	//continuar amanha
+	std::string testando="E 23D4";
+	Comando codigo=tratarDado(testando);
+	mostrarCodigo(codigo);
 	return 0;
 }
