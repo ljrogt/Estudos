@@ -166,5 +166,6 @@ int main(){
 	lista_numeros.removerDoComeco();
 
 	lista_numeros.print();
+
 }
 

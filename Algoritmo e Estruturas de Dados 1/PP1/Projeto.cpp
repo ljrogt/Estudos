@@ -157,6 +157,6 @@ struct Comando{
 
 
 int main(){
-	//continuar amanha
+	//continuar amanhaa
 	return 0;
 }
