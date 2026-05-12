@@ -1,6 +1,36 @@
 #include <iostream>
 #include <string>
 
+struct Comando{
+	std::string indicador;
+	int cod;
+
+	void tratarDado(const std::string dado){
+		std::string codigo="";
+		for(int i=0;i<dado.length();i++){
+			std::string carac(1,dado[i]);
+			try{
+				int teste=std::stoi(carac);
+				codigo+=dado[i];
+			}
+
+			catch(...){
+				if(carac!=" "){
+					indicador=dado[i];
+				}
+			}
+		}
+		cod=stoi(codigo);
+	}
+
+	void print(){
+		std::cout<<"("<<indicador<<","<<cod<<")"<<"\n";
+	}
+
+
+};
+
+
 template <typename T>
 class No{
 private:
@@ -137,54 +167,72 @@ public:
 		item=nullptr;
 		tamanho--;
 	}
+	No<T>* informarPrimeiro(){
+		return cabeca->informarProx();
+	}
+	No<T>* informarUltimo(){
+		return cabeca->informarAnt();
+	}
 
 	void print(){
 		Navegador<T> nav =Navegador(cabeca->informarProx());
 		while(!nav.final(cabeca)){
-			std::cout<<nav.solicitarItem();
+			nav.solicitarItem().print();
 			nav.irProximo();
 		}
 		std::cout<<"\n";
 		
 	}
-};
 
-struct Comando{
-	std::string indicador;
-	int cod;	
-};
-
-Comando tratarDado(const std::string dado){
-	std::string codigo="";
-	std::string indicador=" ";
-	for(int i=0;i<dado.length();i++){
-		std::string carac(1,dado[i]);
-		try{
-			int teste=std::stoi(carac);
-			codigo+=dado[i];
-		}
-
-		catch(...){
-			if(carac!=" "){
-				indicador=dado[i];
-			}
+	void copiar(Deque<T>& copia){
+		Navegador<T> nav=Navegador(cabeca->informarProx());
+		while(!nav.final(cabeca)){
+			T valor=nav.solicitarItem();
+			copia.adicionarNoFinal(valor);
+			nav.irProximo();
 		}
 	}
-	Comando c={indicador, stoi(codigo)};
-	return c;
-}
-void mostrarCodigo(const Comando codigo){
-	std::cout<<"("<<codigo.indicador<<","<<codigo.cod<<")"<<"\n";
-}
+
+};
 
 
 
+template <typename T>
+class Robo{
+private:
+	Deque<T> COMANDOS;
+	Deque<T> FEP;
+	Deque<T> CANCEL;
+	Deque<T> DESC;
+public:
+	Robo(Deque<T>& comds){
+		comds.copiar(COMANDOS);
+	}
 
+	Deque<T>& informarComandos(){
+		return COMANDOS;
+	}
+};
 
 
 int main(){
-	std::string testando="E 23D4";
-	Comando codigo=tratarDado(testando);
-	mostrarCodigo(codigo);
+	Deque<Comando> FilaDeComds;
+	Deque<Comando> oi;
+	Comando comando;
+	bool fim=true;
+	std::string Dado=" ";
+	while(fim){
+		std::getline(std::cin,Dado);
+		if(Dado==""){
+			fim=false;
+		}else{
+		comando.tratarDado(Dado);
+		FilaDeComds.adicionarNoFinal(comando);
+		}
+	}
+	Robo<Comando> Teste=Robo(FilaDeComds);
+	Teste.informarComandos().copiar(oi);
+	oi.print();
+		
 	return 0;
 }
