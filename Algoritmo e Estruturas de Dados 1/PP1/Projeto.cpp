@@ -24,12 +24,20 @@ struct Comando{
 	}
 
 	void print(){
-		std::cout<<"("<<indicador<<","<<cod<<")"<<"\n";
+		std::cout<<"("<<indicador<<","<<cod<<")";
 	}
 
 
 };
 
+template <typename T>
+void print(T valor){
+	std::cout<<valor;
+}
+
+void print(Comando c){
+	c.print();
+}
 
 template <typename T>
 class No{
@@ -175,13 +183,16 @@ public:
 	}
 
 	void print(){
-		Navegador<T> nav =Navegador(cabeca->informarProx());
-		while(!nav.final(cabeca)){
-			nav.solicitarItem().print();
+		Navegador<T> nav=Navegador(cabeca->informarProx());
+		std::cout<<"[";
+		while(!nav.final(cabeca->informarAnt())){
+			::print(nav.solicitarItem());
+			std::cout<<",";
 			nav.irProximo();
 		}
-		std::cout<<"\n";
-		
+		::print(nav.solicitarItem());
+		std::cout<<"]\n";
+
 	}
 
 	void copiar(Deque<T>& copia){
@@ -197,27 +208,44 @@ public:
 
 
 
-template <typename T>
 class Robo{
 private:
-	Deque<T> COMANDOS;
-	Deque<T> FEP;
-	Deque<T> CANCEL;
-	Deque<T> DESC;
+	Deque<Comando> COMANDOS;
+	Deque<Comando> FEP;
+	Deque<int> CANCEL;
+	Deque<int> DESC;
 public:
-	Robo(Deque<T>& comds){
+	Robo(Deque<Comando>& comds){
 		comds.copiar(COMANDOS);
+		Navegador<Comando> nav=Navegador(COMANDOS.informarPrimeiro());
+		while(!nav.final(COMANDOS.informarUltimo())){
+			Comando valor = nav.solicitarItem();
+			processar(valor);
+			nav.irProximo();
+			
+		}
+		Comando valor=nav.solicitarItem();
+		processar(valor);
+	}
+	
+	void processar(Comando c){
+		if(c.indicador=="E"||(c.indicador=="-"&&c.cod==0)){
+			FEP.adicionarNoFinal(c);
+		}
 	}
 
-	Deque<T>& informarComandos(){
-		return COMANDOS;
+	void dados(){
+		FEP.print();
 	}
+
+
+
+	
 };
 
 
 int main(){
 	Deque<Comando> FilaDeComds;
-	Deque<Comando> oi;
 	Comando comando;
 	bool fim=true;
 	std::string Dado=" ";
@@ -230,9 +258,10 @@ int main(){
 		FilaDeComds.adicionarNoFinal(comando);
 		}
 	}
-	Robo<Comando> Teste=Robo(FilaDeComds);
-	Teste.informarComandos().copiar(oi);
-	oi.print();
+
+	Robo Biggy=Robo(FilaDeComds);
+
+	Biggy.dados();
 		
 	return 0;
 }
