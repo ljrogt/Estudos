@@ -24,11 +24,14 @@ struct Comando{
 	}
 
 	void print(){
-		std::cout<<"("<<indicador<<","<<cod<<")";
+		std::cout<<"("<<indicador<<", "<<cod<<")";
 	}
 
 
 };
+
+
+
 
 template <typename T>
 void print(T valor){
@@ -206,46 +209,82 @@ public:
 
 };
 
-
-
-class Robo{
-private:
-	Deque<Comando> COMANDOS;
+struct Sistema{
+	Deque<Comando> FilaDeComandos;
 	Deque<Comando> FEP;
 	Deque<int> CANCEL;
 	Deque<int> DESC;
+};
+
+bool buscar(Comando c, Deque<Comando>& deque){
+	Navegador<Comando> nav=Navegador(deque.informarPrimeiro());
+	while(!nav.final(deque.informarUltimo())){
+		if(c.indicador==nav.solicitarItem().indicador&&c.cod==nav.solicitarItem().cod){
+			return true;
+		}
+		nav.irProximo();
+	}
+	if(c.indicador==nav.solicitarItem().indicador&&c.cod==nav.solicitarItem().cod){
+		return true;
+	}
+	return false;
+}
+
+
+
+
+class Robo{
+
 public:
-	Robo(Deque<Comando>& comds){
-		comds.copiar(COMANDOS);
-		Navegador<Comando> nav=Navegador(COMANDOS.informarPrimeiro());
-		while(!nav.final(COMANDOS.informarUltimo())){
+	Robo(Sistema& sis){
+		Navegador<Comando> nav=Navegador(sis.FilaDeComandos.informarPrimeiro());
+		while(!nav.final(sis.FilaDeComandos.informarUltimo())){
 			Comando valor = nav.solicitarItem();
-			processar(valor);
+			processar(sis,valor);
 			nav.irProximo();
 			
 		}
 		Comando valor=nav.solicitarItem();
-		processar(valor);
+		processar(sis, valor);
 	}
 	
-	void processar(Comando c){
+	void processar(Sistema& sis,Comando c){
 		if(c.indicador=="E"||(c.indicador=="-"&&c.cod==0)){
-			FEP.adicionarNoFinal(c);
+			if(!buscar(c, sis.FEP)){
+				sis.FEP.adicionarNoFinal(c);
+			}
 		}
+		if(c.indicador=="C"){
+			Comando p=c;
+			p.indicador="E";
+			if(buscar(p, sis.FEP)&&!buscar(c,sis.FEP)){
+				sis.FEP.adicionarNoFinal(c);
+			}
+			if(!buscar(p,sis.FEP)){
+				sis.CANCEL.adicionarNoFinal(c.cod);
+			}
+		}
+		if(c.indicador=="A"){
+			Comando p=c;
+			p.indicador="E";
+			if(buscar(p,sis.FEP)&&!buscar(c,sis.FEP)){
+				sis.FEP.adicionarNoFinal(c);
+			}
+			if(!buscar(p,sis.FEP)){
+				sis.DESC.adicionarNoFinal(c.cod);
+			}
+		}
+
 	}
-
-	void dados(){
-		FEP.print();
-	}
-
-
-
 	
 };
 
 
+
+
+
 int main(){
-	Deque<Comando> FilaDeComds;
+	Sistema sistema;
 	Comando comando;
 	bool fim=true;
 	std::string Dado=" ";
@@ -255,13 +294,13 @@ int main(){
 			fim=false;
 		}else{
 		comando.tratarDado(Dado);
-		FilaDeComds.adicionarNoFinal(comando);
+		sistema.FilaDeComandos.adicionarNoFinal(comando);
 		}
 	}
 
-	Robo Biggy=Robo(FilaDeComds);
-
-	Biggy.dados();
-		
+	Robo Biggy=Robo(sistema);
+	sistema.FEP.print();
+	sistema.CANCEL.print();	
+	sistema.DESC.print();
 	return 0;
 }
