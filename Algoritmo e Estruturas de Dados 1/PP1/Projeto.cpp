@@ -178,11 +178,12 @@ public:
 		item=nullptr;
 		tamanho--;
 	}
-	No<T>* informarPrimeiro(){
-		return cabeca->informarProx();
+	No<T>* informarCabeca(){
+		return cabeca;
 	}
-	No<T>* informarUltimo(){
-		return cabeca->informarAnt();
+
+	int informarTamanho(){
+		return tamanho;
 	}
 
 	void print(){
@@ -212,43 +213,43 @@ public:
 struct Sistema{
 	Deque<Comando> FilaDeComandos;
 	Deque<Comando> FEP;
+	Deque<int> PEP;
 	Deque<int> CANCEL;
 	Deque<int> DESC;
 };
 
 bool buscar(Comando c, Deque<Comando>& deque){
-	Navegador<Comando> nav=Navegador(deque.informarPrimeiro());
-	while(!nav.final(deque.informarUltimo())){
+	Navegador<Comando> nav=Navegador(deque.informarCabeca()->informarProx());
+	while(!nav.final(deque.informarCabeca())){
 		if(c.indicador==nav.solicitarItem().indicador&&c.cod==nav.solicitarItem().cod){
 			return true;
 		}
 		nav.irProximo();
 	}
-	if(c.indicador==nav.solicitarItem().indicador&&c.cod==nav.solicitarItem().cod){
-		return true;
-	}
+	
 	return false;
 }
-
+template <typename T>
+bool buscar(T c, Deque<T>& deque){
+	Navegador<T> nav=Navegador(deque.informarCabeca()->informarProx());
+	while(!nav.final(deque.informarCabeca())){
+		if(c=nav.solicitarItem()){
+			return true;
+		}
+		nav.irProximo();
+	}
+	
+	return false;
+};
 
 
 
 class Robo{
 
 public:
-	Robo(Sistema& sis){
-		Navegador<Comando> nav=Navegador(sis.FilaDeComandos.informarPrimeiro());
-		while(!nav.final(sis.FilaDeComandos.informarUltimo())){
-			Comando valor = nav.solicitarItem();
-			processar(sis,valor);
-			nav.irProximo();
-			
-		}
-		Comando valor=nav.solicitarItem();
-		processar(sis, valor);
-	}
 	
 	void processar(Sistema& sis,Comando c){
+
 		if(c.indicador=="E"||(c.indicador=="-"&&c.cod==0)){
 			if(!buscar(c, sis.FEP)){
 				sis.FEP.adicionarNoFinal(c);
@@ -261,7 +262,9 @@ public:
 				sis.FEP.adicionarNoFinal(c);
 			}
 			if(!buscar(p,sis.FEP)){
-				sis.CANCEL.adicionarNoFinal(c.cod);
+				if(!buscar(c.cod,sis.CANCEL)){
+					sis.CANCEL.adicionarNoFinal(c.cod);
+				}
 			}
 		}
 		if(c.indicador=="A"){
@@ -273,9 +276,61 @@ public:
 			if(!buscar(p,sis.FEP)){
 				sis.DESC.adicionarNoFinal(c.cod);
 			}
-		}
-
+		}		
 	}
+	
+	void processar(Sistema& sis){
+		Deque<int> AUX;
+		Navegador<Comando> nav=Navegador(sis.FEP.informarCabeca()->informarProx());
+		while(!nav.final(sis.FEP.informarCabeca())){
+			Comando c=nav.solicitarItem();
+			if(c.indicador=="E"){
+				sis.PEP.adicionarNoComeco(c.cod);
+			}
+			if(c.indicador=="C"){
+				while(true){
+					if(sis.PEP.informarCabeca()->informarProx()->informarItem()!=c.cod){
+						AUX.adicionarNoComeco(sis.PEP.informarCabeca()->informarProx()->informarItem());
+						sis.PEP.removerDoComeco();
+					}else{
+						sis.CANCEL.adicionarNoFinal(sis.PEP.informarCabeca()->informarProx()->informarItem());
+						sis.PEP.removerDoComeco();
+						while(true){
+							if(AUX.informarTamanho()>0){
+								sis.PEP.adicionarNoComeco(AUX.informarCabeca()->informarProx()->informarItem());
+								AUX.removerDoComeco();
+							}else{
+								break;
+							}
+						}
+						break;
+					}
+				}
+			}
+			if(c.indicador=="A"){
+				while(true){
+					if(sis.PEP.informarCabeca()->informarProx()->informarItem()!=c.cod){
+						AUX.adicionarNoComeco(sis.PEP.informarCabeca()->informarProx()->informarItem());
+						sis.PEP.removerDoComeco();
+					}else{
+						sis.DESC.adicionarNoFinal(sis.PEP.informarCabeca()->informarProx()->informarItem());
+						sis.PEP.removerDoComeco();
+						while(true){
+							if(AUX.informarTamanho()>0){
+								sis.PEP.adicionarNoComeco(AUX.informarCabeca()->informarProx()->informarItem());
+								AUX.removerDoComeco();
+							}else{
+								break;
+							}
+						}
+						break;
+					}
+				}
+			}
+			nav.irProximo();
+		}
+	}
+		
 	
 };
 
@@ -288,19 +343,27 @@ int main(){
 	Comando comando;
 	bool fim=true;
 	std::string Dado=" ";
+	Robo Biggy;
+	Robo Bang;
 	while(fim){
 		std::getline(std::cin,Dado);
 		if(Dado==""){
 			fim=false;
 		}else{
 		comando.tratarDado(Dado);
+		Biggy.processar(sistema, comando);
 		sistema.FilaDeComandos.adicionarNoFinal(comando);
 		}
 	}
-
-	Robo Biggy=Robo(sistema);
+	sistema.FEP.print();
+	sistema.CANCEL.print();
+	sistema.DESC.print();
+	std::cout<<"\n";
+	Bang.processar(sistema);
+	sistema.FilaDeComandos.print();
 	sistema.FEP.print();
 	sistema.CANCEL.print();	
 	sistema.DESC.print();
+	sistema.PEP.print();
 	return 0;
 }
