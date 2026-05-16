@@ -6,7 +6,7 @@ struct Comando{
     int cod;
 
     void tratarDado(){
-	    std::cin>>indicador>>cod;
+        std::cin>>indicador>>cod;
     }
 
     void print(){
@@ -77,8 +77,8 @@ private:
 public:
 
     Navegador(No<T>* inicio,No<T>* f){
-	    atual=inicio;
-	    fim=f;
+        atual=inicio;
+        fim=f;
     }
 
     void irProximo(){
@@ -98,18 +98,18 @@ public:
 
 template <typename T>
 void print(Navegador<T> nav){
-	std::cout<<"[";
-	if(nav.final()){
-		std::cout<<" ";
-	}
-	while(!nav.final()){
-		prinT(nav.solicitarItem());
-		nav.irProximo();
-		if(!nav.final()){
-			std::cout<<", ";
-		}
-	}
-	std::cout<<"]\n";
+    std::cout<<"[";
+    if(nav.final()){
+        std::cout<<" ";
+    }
+    while(!nav.final()){
+        prinT(nav.solicitarItem());
+        nav.irProximo();
+        if(!nav.final()){
+            std::cout<<", ";
+        }
+    }
+    std::cout<<"]\n";
 }
 
 template <typename T>
@@ -184,20 +184,20 @@ public:
         tamanho--;
     }
     
-    T informarPrimeiro(){
+    T obterPrimeiro(){
         return cabeca->informarProx()->informarItem();
     }
     
-    T informarUltimo(){
-	    return cabeca->informarAnt()->informarItem();
+    T obterUltimo(){
+        return cabeca->informarAnt()->informarItem();
     }
 
     Navegador<T> dequeNavegador(){
-	    Navegador<T> nav=Navegador(cabeca->informarProx(),cabeca->informarAnt());
-	    return nav;
+        Navegador<T> nav=Navegador(cabeca->informarProx(),cabeca->informarAnt());
+        return nav;
     }
 
-    int informarTamanho(){
+    int obterTamanho(){
         return tamanho;
     }
 
@@ -209,23 +209,23 @@ class Fila{
 private:
     Deque<T> deque;
 public:
-    void adicionar(T item){
+    void enfileirar(T item){
         deque.adicionarNoFinal(item);
     }
-    void remover(){
+    void desenfileirar(){
         deque.removerDoComeco();
     }
     
-    T informarPrimeiro(){
-	    return deque.informarPrimeiro();
+    T obterPrimeiro(){
+        return deque.obterPrimeiro();
     }
 
     Navegador<T> filaNavegador(){
-	    return deque.dequeNavegador();
+        return deque.dequeNavegador();
     }
  
-    int informarTamanho(){
-        return deque.informarTamanho();
+    int obterTamanho(){
+        return deque.obterTamanho();
     }
 };
 
@@ -235,24 +235,24 @@ class Pilha{
 private:
     Deque<T> deque;
 public:
-    void adicionar(T item){
+    void empilhar(T item){
         deque.adicionarNoComeco(item);
     }
-    void remover(){
+    void desempilhar(){
         deque.removerDoComeco();
     }
     
-    T informarPrimeiro(){
-	    return deque.informarPrimeiro();
+    T obterPrimeiro(){
+        return deque.obterPrimeiro();
     }
 
     Navegador<T> pilhaNavegador(){
-	    return deque.dequeNavegador();
+        return deque.dequeNavegador();
     }
     
    
-    int informarTamanho(){
-        return deque.informarTamanho();
+    int obterTamanho(){
+        return deque.obterTamanho();
     }
 };
 
@@ -330,18 +330,18 @@ public:
             nav.irProximo();
             if(c.indicador=="E"||(c.indicador=="-"&&c.cod==0)){
                 if(!buscar(c, FEP)){
-                    FEP.adicionar(c);
+                    FEP.enfileirar(c);
                 }
             }
             if(c.indicador=="C"){
                 Comando p=c;
                 p.indicador="E";
                 if(buscar(p, FEP)&&!buscar(c,FEP)){
-                    FEP.adicionar(c);
+                    FEP.enfileirar(c);
                 }
                 if(!buscar(p,FEP)){
                     if(!buscar(c.cod,CANCEL)){
-                        CANCEL.adicionar(c.cod);
+                        CANCEL.enfileirar(c.cod);
                     }
                 }
             }
@@ -349,10 +349,10 @@ public:
                 Comando p=c;
                 p.indicador="E";
                 if(buscar(p,FEP)&&!buscar(c,FEP)){
-                    FEP.adicionar(c);
+                    FEP.enfileirar(c);
                 }
                 if(!buscar(p,FEP)){
-                    DESC.adicionar(c.cod);
+                    DESC.enfileirar(c.cod);
                 }
             }        
         }
@@ -365,27 +365,27 @@ private:
     Pilha<int> AUX;
 public:
     void printAUX(){
-	    print(AUX.pilhaNavegador());
+        print(AUX.pilhaNavegador());
     }
     void processar(Sistema& sis){
-        while(sis.FEP.informarTamanho()>0){
-            Comando c=sis.FEP.informarPrimeiro();
-            sis.FEP.remover();
+        while(sis.FEP.obterTamanho()>0){
+            Comando c=sis.FEP.obterPrimeiro();
+            sis.FEP.desenfileirar();
             if(c.indicador=="E"){
-                sis.PEP.adicionar(c.cod);
+                sis.PEP.empilhar(c.cod);
             }
             if(c.indicador=="C"){
                 while(true){
-                    if(sis.PEP.informarPrimeiro()!=c.cod){
-                        AUX.adicionar(sis.PEP.informarPrimeiro());
-                        sis.PEP.remover();
+                    if(sis.PEP.obterPrimeiro()!=c.cod){
+                        AUX.empilhar(sis.PEP.obterPrimeiro());
+                        sis.PEP.desempilhar();
                     }else{
-                        sis.CANCEL.adicionar(sis.PEP.informarPrimeiro());
-                        sis.PEP.remover();
+                        sis.CANCEL.enfileirar(sis.PEP.obterPrimeiro());
+                        sis.PEP.desempilhar();
                         while(true){
-                            if(AUX.informarTamanho()>0){
-                                sis.PEP.adicionar(AUX.informarPrimeiro());
-                                AUX.remover();
+                            if(AUX.obterTamanho()>0){
+                                sis.PEP.empilhar(AUX.obterPrimeiro());
+                                AUX.desempilhar();
                             }else{
                                 break;
                             }
@@ -396,16 +396,16 @@ public:
             }    
             if(c.indicador=="A"){
                 while(true){
-                    if(sis.PEP.informarPrimeiro()!=c.cod){
-                        AUX.adicionar(sis.PEP.informarPrimeiro());
-                        sis.PEP.remover();
+                    if(sis.PEP.obterPrimeiro()!=c.cod){
+                        AUX.empilhar(sis.PEP.obterPrimeiro());
+                        sis.PEP.desempilhar();
                     }else{
-                        sis.DESC.adicionar(sis.PEP.informarPrimeiro());
-                        sis.PEP.remover();
+                        sis.DESC.enfileirar(sis.PEP.obterPrimeiro());
+                        sis.PEP.desempilhar();
                         while(true){
-                            if(AUX.informarTamanho()>0){
-                                sis.PEP.adicionar(AUX.informarPrimeiro());
-                                AUX.remover();
+                            if(AUX.obterTamanho()>0){
+                                sis.PEP.empilhar(AUX.obterPrimeiro());
+                                AUX.desempilhar();
                             }else{
                                 break;
                             }
@@ -424,12 +424,11 @@ int main(){
     Sistema sistema;
     Comando comando;
     bool fim=true;
-    std::string Dado=" ";
     Biggy biggy;
     Bang bang;
     while(fim){
-	   comando.tratarDado();
-           sistema.FilaDeComandos.adicionar(comando);
+       comando.tratarDado();
+           sistema.FilaDeComandos.enfileirar(comando);
            if(comando.indicador=="-"&&comando.cod==0){
                 fim=false;
           }
@@ -439,28 +438,30 @@ int main(){
     std::cout<<"Biggy:\n";
     std::cout<<"FEP = ";
     print(sistema.FEP.filaNavegador());
+    
     std::cout<<"CANCEL = ";
-
     print(sistema.CANCEL.filaNavegador());
+    
     std::cout<<"DESC = ";
-
     print(sistema.DESC.filaNavegador());
+    
     std::cout<<"\n";
     std::cout<<"Bang:\n";
     bang.processar(sistema);
+    
     std::cout<<"FEP = ";
-
     print(sistema.FEP.filaNavegador());
+    
     std::cout<<"PEP = ";
-
     print(sistema.PEP.pilhaNavegador());
+    
     std::cout<<"AUX = ";
     bang.printAUX();
+    
     std::cout<<"CANCEL = ";
-
     print(sistema.CANCEL.filaNavegador());
+    
     std::cout<<"DESC = ";
-
     print(sistema.DESC.filaNavegador());
     return 0;
 }
